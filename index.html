@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Safeguard against 'Cannot set property fetch of #<Window> which has only a getter'
+      (function () {
+        try {
+          var originalFetch = window.fetch;
+          var customFetch = typeof originalFetch === 'function' ? originalFetch.bind(window) : undefined;
+          Object.defineProperty(window, 'fetch', {
+            get: function () {
+              return customFetch || originalFetch;
+            },
+            set: function (newFetch) {
+              customFetch = newFetch;
+            },
+            configurable: true,
+            enumerable: true,
+          });
+        } catch (e) {
+          // Ignore if environment prevents redefinition
+        }
+      })();
+    </script>
+    <title>Ferretería July | Herramientas, Construcción y Soluciones Profesionales</title>
+    <meta name="description" content="Ferretería July - Tu tienda especializada en herramientas eléctricas, manuales, materiales de construcción, pinturas, plomería y electricidad. Calidad, asesoría y precios competitivos." />
+    <meta name="keywords" content="ferretería, herramientas, construcción, Bosch, Stanley, Makita, pinturas, electricidad, plomería, Ferretería July" />
+    <meta property="og:title" content="Ferretería July | Catálogo y Promociones" />
+    <meta property="og:description" content="Encuentra las mejores marcas en herramientas, materiales y asesoría especializada." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-surface text-text antialiased selection:bg-amber-500 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
