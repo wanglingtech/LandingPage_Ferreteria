@@ -1,30 +1,44 @@
-import React from 'react';
-import { SITE_CONFIG } from '../../config/site.config';
-import { Award, Users, CheckCircle2, Shield, HeartHandshake, ArrowRight, MapPin } from 'lucide-react';
-import { generateBannerPlaceholder } from '../../utils/imageFallback';
+import React from "react";
+import { SITE_CONFIG } from "../../config/site.config";
+import {
+  Award,
+  Users,
+  CheckCircle2,
+  Shield,
+  HeartHandshake,
+  ArrowRight,
+  MapPin,
+} from "lucide-react";
+import { generateBannerPlaceholder } from "../../utils/imageFallback";
 
 interface AboutSectionProps {
   onNavigateSection: (sectionId: string) => void;
 }
 
-export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigateSection }) => {
+export const AboutSection: React.FC<AboutSectionProps> = ({
+  onNavigateSection,
+}) => {
   return (
-    <section id="nosotros" className="py-16 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
+    <section
+      id="nosotros"
+      className="py-16 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
           {/* Lado Izquierdo: Composición de Imágenes y Experiencia (lg:col-span-6) */}
           <div className="lg:col-span-6 relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700 bg-slate-800">
               <img
-                src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?auto=format&fit=crop&w=800&q=80"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0qjFg762A62lOxVS5fsfAtUndJdw27yUWvI2UJFU71Sa7rlfMIWaOhoI&s=10"
                 alt="Ferretería July Almacén y Atención"
                 loading="lazy"
                 referrerPolicy="no-referrer"
                 crossOrigin="anonymous"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = generateBannerPlaceholder('Ferretería July - Almacén y Atención');
+                  (e.currentTarget as HTMLImageElement).src =
+                    generateBannerPlaceholder(
+                      "Ferretería July - Almacén y Atención",
+                    );
                 }}
                 className="w-full h-80 sm:h-96 object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -36,8 +50,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigateSection })
                 +15
               </div>
               <div>
-                <h4 className="text-sm font-black uppercase tracking-wider">Años de Trayectoria</h4>
-                <p className="text-[11px] text-slate-300">Equipando obras civiles, industrias y hogares.</p>
+                <h4 className="text-sm font-black uppercase tracking-wider">
+                  Años de Trayectoria
+                </h4>
+                <p className="text-[11px] text-slate-300">
+                  Equipando obras civiles, industrias y hogares.
+                </p>
               </div>
             </div>
           </div>
@@ -52,15 +70,26 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigateSection })
                 Tu socio estratégico en herramientas y construcción
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
-                En <strong className="text-slate-900 dark:text-white">Ferretería July</strong> nos dedicamos a suministrar productos de alta calidad para contratistas, maestros de obra, talleres y familias que buscan durabilidad y rendimiento garantizado.
+                En{" "}
+                <strong className="text-slate-900 dark:text-white">
+                  Ferretería July
+                </strong>{" "}
+                nos dedicamos a suministrar productos de alta calidad para
+                contratistas, maestros de obra, talleres y familias que buscan
+                durabilidad y rendimiento garantizado.
               </p>
             </div>
 
             {/* Métricas clave */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-3">
               {SITE_CONFIG.stats.map((st, idx) => (
-                <div key={idx} className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center">
-                  <p className="text-xl sm:text-2xl font-black text-[#f97316]">{st.value}</p>
+                <div
+                  key={idx}
+                  className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center"
+                >
+                  <p className="text-xl sm:text-2xl font-black text-[#f97316]">
+                    {st.value}
+                  </p>
                   <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-0.5">
                     {st.label}
                   </p>
@@ -79,7 +108,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigateSection })
                     Distribución de Marcas Líderes
                   </h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Garantía oficial directa en DeWalt, Bosch, Stanley, Makita, Indeco y Sika.
+                    Garantía oficial directa en DeWalt, Bosch, Stanley, Makita,
+                    Indeco y Sika.
                   </p>
                 </div>
               </div>
@@ -93,7 +123,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigateSection })
                     Asesoría Técnica Especializada
                   </h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Personal capacitado para recomendarte la solución exacta antes de comprar.
+                    Personal capacitado para recomendarte la solución exacta
+                    antes de comprar.
                   </p>
                 </div>
               </div>
@@ -107,7 +138,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigateSection })
                     Despacho Inmediato a Todo el País
                   </h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Coordinamos fletes rápidos y seguros directo a tu obra o taller.
+                    Coordinamos fletes rápidos y seguros directo a tu obra o
+                    taller.
                   </p>
                 </div>
               </div>
@@ -116,10 +148,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigateSection })
             {/* CTA */}
             <div className="pt-4 flex flex-wrap items-center gap-3">
               <button
-                onClick={() => onNavigateSection('contacto')}
+                onClick={() => onNavigateSection("contacto")}
                 className="py-3 px-6 rounded-xl bg-[#0f172a] text-white text-xs font-bold hover:bg-slate-800 transition-colors flex items-center gap-2"
               >
-                Contáctanos y Visítanos <ArrowRight className="w-4 h-4 text-[#f97316]" />
+                Contáctanos y Visítanos{" "}
+                <ArrowRight className="w-4 h-4 text-[#f97316]" />
               </button>
 
               <a
@@ -131,11 +164,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigateSection })
                 <MapPin className="w-4 h-4 text-[#f97316]" /> Ver en Google Maps
               </a>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );
