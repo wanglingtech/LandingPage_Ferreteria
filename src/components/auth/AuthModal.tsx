@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
-import { X, Lock, Mail, User as UserIcon, Phone, Eye, EyeOff, ShieldCheck, CheckCircle2, AlertCircle, LogOut } from 'lucide-react';
-import { User } from '../../models';
-import { authService } from '../../services/auth.service';
-import { generateAvatarPlaceholder } from '../../utils/imageFallback';
+import React, { useState } from "react";
+import {
+  X,
+  Lock,
+  Mail,
+  User as UserIcon,
+  Phone,
+  Eye,
+  EyeOff,
+  ShieldCheck,
+  CheckCircle2,
+  AlertCircle,
+  LogOut,
+} from "lucide-react";
+import { User } from "../../models";
+import { authService } from "../../services/auth.service";
+import { generateAvatarPlaceholder } from "../../utils/imageFallback";
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -15,23 +27,23 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   onClose,
   currentUser,
 }) => {
-  const [tab, setTab] = useState<'login' | 'register' | 'recover'>('login');
+  const [tab, setTab] = useState<"login" | "register" | "recover">("login");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState("");
 
   // Login Form
-  const [loginEmail, setLoginEmail] = useState('');
-  const [loginPassword, setLoginPassword] = useState('');
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
 
   // Register Form
-  const [regName, setRegName] = useState('');
-  const [regEmail, setRegEmail] = useState('');
-  const [regPhone, setRegPhone] = useState('');
-  const [regPassword, setRegPassword] = useState('');
+  const [regName, setRegName] = useState("");
+  const [regEmail, setRegEmail] = useState("");
+  const [regPhone, setRegPhone] = useState("");
+  const [regPassword, setRegPassword] = useState("");
 
   // Recover Form
-  const [recoverEmail, setRecoverEmail] = useState('');
+  const [recoverEmail, setRecoverEmail] = useState("");
 
   if (!isOpen) return null;
 
@@ -39,11 +51,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     e.preventDefault();
     try {
       setIsLoading(true);
-      setErrorMsg('');
+      setErrorMsg("");
       await authService.login({ email: loginEmail, password: loginPassword });
       onClose();
     } catch (err: any) {
-      setErrorMsg(err.message || 'Error al iniciar sesión');
+      setErrorMsg(err.message || "Error al iniciar sesión");
     } finally {
       setIsLoading(false);
     }
@@ -53,7 +65,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     e.preventDefault();
     try {
       setIsLoading(true);
-      setErrorMsg('');
+      setErrorMsg("");
       await authService.register({
         name: regName,
         email: regEmail,
@@ -62,7 +74,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       });
       onClose();
     } catch (err: any) {
-      setErrorMsg(err.message || 'Error al registrarse');
+      setErrorMsg(err.message || "Error al registrarse");
     } finally {
       setIsLoading(false);
     }
@@ -71,11 +83,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   const handleGoogleLogin = async () => {
     try {
       setIsLoading(true);
-      setErrorMsg('');
+      setErrorMsg("");
       await authService.loginWithGoogle();
       onClose();
     } catch (err: any) {
-      setErrorMsg(err.message || 'Error con Google Auth');
+      setErrorMsg(err.message || "Error con Google Auth");
     } finally {
       setIsLoading(false);
     }
@@ -85,24 +97,24 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     e.preventDefault();
     try {
       setIsLoading(true);
-      setErrorMsg('');
+      setErrorMsg("");
       await authService.recoverPassword(recoverEmail);
-      setTab('login');
+      setTab("login");
     } catch (err: any) {
-      setErrorMsg(err.message || 'Error al recuperar contraseña');
+      setErrorMsg(err.message || "Error al recuperar contraseña");
     } finally {
       setIsLoading(false);
     }
   };
 
   // Relleno rápido de prueba
-  const handleQuickFill = (role: 'admin' | 'cliente') => {
-    if (role === 'admin') {
-      setLoginEmail('admin@ferreteriajuly.com');
-      setLoginPassword('Admin123*');
+  const handleQuickFill = (role: "admin" | "cliente") => {
+    if (role === "admin") {
+      setLoginEmail("admin@ferreteriajuly.com");
+      setLoginPassword("Admin123*");
     } else {
-      setLoginEmail('cliente.pro@gmail.com');
-      setLoginPassword('Cliente123*');
+      setLoginEmail("cliente.pro@gmail.com");
+      setLoginPassword("Cliente123*");
     }
   };
 
@@ -141,12 +153,15 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           <div className="p-6 space-y-6">
             <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
               <img
-                src={currentUser.avatar || generateAvatarPlaceholder(currentUser.name)}
+                src={
+                  currentUser.avatar ||
+                  generateAvatarPlaceholder(currentUser.name)
+                }
                 alt={currentUser.name}
                 referrerPolicy="no-referrer"
-                crossOrigin="anonymous"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = generateAvatarPlaceholder(currentUser.name);
+                  (e.currentTarget as HTMLImageElement).src =
+                    generateAvatarPlaceholder(currentUser.name);
                 }}
                 className="w-14 h-14 rounded-full object-cover ring-2 ring-[#f97316]"
               />
@@ -166,7 +181,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             <div className="space-y-2 text-xs text-slate-600 dark:text-slate-300">
               <p className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>Sesión activa con token JWT listo para sincronizar compras y reseñas.</span>
+                <span>
+                  Sesión activa con token JWT listo para sincronizar compras y
+                  reseñas.
+                </span>
               </p>
             </div>
 
@@ -185,37 +203,41 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             {/* Tabs */}
             <div className="flex border-b border-slate-200 dark:border-slate-800 pb-2 gap-4 text-xs font-bold">
               <button
-                onClick={() => { setTab('login'); setErrorMsg(''); }}
+                onClick={() => {
+                  setTab("login");
+                  setErrorMsg("");
+                }}
                 className={`pb-2 transition-colors relative ${
-                  tab === 'login'
-                    ? 'text-[#f97316]'
-                    : 'text-slate-500 hover:text-slate-800 dark:hover:text-white'
+                  tab === "login"
+                    ? "text-[#f97316]"
+                    : "text-slate-500 hover:text-slate-800 dark:hover:text-white"
                 }`}
               >
                 Iniciar Sesión
-                {tab === 'login' && (
+                {tab === "login" && (
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#f97316] rounded-full" />
                 )}
               </button>
 
               <button
-                onClick={() => { setTab('register'); setErrorMsg(''); }}
+                onClick={() => {
+                  setTab("register");
+                  setErrorMsg("");
+                }}
                 className={`pb-2 transition-colors relative ${
-                  tab === 'register'
-                    ? 'text-[#f97316]'
-                    : 'text-slate-500 hover:text-slate-800 dark:hover:text-white'
+                  tab === "register"
+                    ? "text-[#f97316]"
+                    : "text-slate-500 hover:text-slate-800 dark:hover:text-white"
                 }`}
               >
                 Crear Cuenta
-                {tab === 'register' && (
+                {tab === "register" && (
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#f97316] rounded-full" />
                 )}
               </button>
 
-              {tab === 'recover' && (
-                <button
-                  className="pb-2 text-[#f97316] relative font-bold"
-                >
+              {tab === "recover" && (
+                <button className="pb-2 text-[#f97316] relative font-bold">
                   Recuperar Contraseña
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#f97316] rounded-full" />
                 </button>
@@ -231,7 +253,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             )}
 
             {/* Botón de Google OAuth */}
-            {tab !== 'recover' && (
+            {tab !== "recover" && (
               <div>
                 <button
                   type="button"
@@ -274,7 +296,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             )}
 
             {/* Formulario Iniciar Sesión */}
-            {tab === 'login' && (
+            {tab === "login" && (
               <form onSubmit={handleLogin} className="space-y-3.5">
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
@@ -300,7 +322,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     </label>
                     <button
                       type="button"
-                      onClick={() => setTab('recover')}
+                      onClick={() => setTab("recover")}
                       className="text-[11px] text-[#f97316] hover:underline"
                     >
                       ¿Olvidaste tu contraseña?
@@ -308,7 +330,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   </div>
                   <div className="relative">
                     <input
-                      type={showPassword ? 'text' : 'password'}
+                      type={showPassword ? "text" : "password"}
                       required
                       value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
@@ -321,7 +343,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-2.5 text-slate-400"
                     >
-                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      {showPassword ? (
+                        <EyeOff className="w-4 h-4" />
+                      ) : (
+                        <Eye className="w-4 h-4" />
+                      )}
                     </button>
                   </div>
                 </div>
@@ -332,7 +358,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   className="w-full py-2.5 px-4 rounded-xl bg-[#0f172a] text-white text-xs font-bold hover:bg-slate-800 transition-colors flex items-center justify-center gap-2 shadow-md"
                 >
                   <ShieldCheck className="w-4 h-4 text-[#f97316]" />
-                  {isLoading ? 'Verificando...' : 'Iniciar Sesión'}
+                  {isLoading ? "Verificando..." : "Iniciar Sesión"}
                 </button>
 
                 {/* Acceso Rápido para Prueba */}
@@ -343,14 +369,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   <div className="flex gap-2">
                     <button
                       type="button"
-                      onClick={() => handleQuickFill('cliente')}
+                      onClick={() => handleQuickFill("cliente")}
                       className="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-medium"
                     >
                       Demo Cliente
                     </button>
                     <button
                       type="button"
-                      onClick={() => handleQuickFill('admin')}
+                      onClick={() => handleQuickFill("admin")}
                       className="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-medium"
                     >
                       Demo Admin
@@ -361,7 +387,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             )}
 
             {/* Formulario Crear Cuenta */}
-            {tab === 'register' && (
+            {tab === "register" && (
               <form onSubmit={handleRegister} className="space-y-3">
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
@@ -419,7 +445,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   </label>
                   <div className="relative">
                     <input
-                      type={showPassword ? 'text' : 'password'}
+                      type={showPassword ? "text" : "password"}
                       required
                       minLength={6}
                       value={regPassword}
@@ -433,7 +459,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-2.5 text-slate-400"
                     >
-                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      {showPassword ? (
+                        <EyeOff className="w-4 h-4" />
+                      ) : (
+                        <Eye className="w-4 h-4" />
+                      )}
                     </button>
                   </div>
                 </div>
@@ -443,16 +473,19 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   disabled={isLoading}
                   className="w-full py-2.5 px-4 rounded-xl bg-[#f97316] text-white text-xs font-bold hover:bg-[#ea580c] transition-colors flex items-center justify-center gap-2 shadow-md shadow-orange-500/20"
                 >
-                  {isLoading ? 'Registrando...' : 'Registrarme en Ferretería July'}
+                  {isLoading
+                    ? "Registrando..."
+                    : "Registrarme en Ferretería July"}
                 </button>
               </form>
             )}
 
             {/* Formulario Recuperar Contraseña */}
-            {tab === 'recover' && (
+            {tab === "recover" && (
               <form onSubmit={handleRecover} className="space-y-4">
                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                  Ingresa el correo asociado a tu cuenta y te enviaremos las instrucciones de restablecimiento.
+                  Ingresa el correo asociado a tu cuenta y te enviaremos las
+                  instrucciones de restablecimiento.
                 </p>
 
                 <div>
@@ -478,11 +511,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     disabled={isLoading}
                     className="flex-1 py-2.5 px-4 rounded-xl bg-[#0f172a] text-white text-xs font-bold hover:bg-slate-800 transition-colors"
                   >
-                    {isLoading ? 'Enviando...' : 'Enviar Enlace'}
+                    {isLoading ? "Enviando..." : "Enviar Enlace"}
                   </button>
                   <button
                     type="button"
-                    onClick={() => setTab('login')}
+                    onClick={() => setTab("login")}
                     className="py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-bold"
                   >
                     Volver

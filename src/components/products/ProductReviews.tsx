@@ -1,9 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { ProductReview, User } from '../../models';
-import { reviewService } from '../../services/review.service';
-import { StarRating } from '../shared/StarRating';
-import { MessageSquare, Edit2, Trash2, CheckCircle2, User as UserIcon, Send, X, AlertCircle } from 'lucide-react';
-import { generateAvatarPlaceholder } from '../../utils/imageFallback';
+import React, { useState, useEffect } from "react";
+import { ProductReview, User } from "../../models";
+import { reviewService } from "../../services/review.service";
+import { StarRating } from "../shared/StarRating";
+import {
+  MessageSquare,
+  Edit2,
+  Trash2,
+  CheckCircle2,
+  User as UserIcon,
+  Send,
+  X,
+  AlertCircle,
+} from "lucide-react";
+import { generateAvatarPlaceholder } from "../../utils/imageFallback";
 
 interface ProductReviewsProps {
   productId: string;
@@ -23,15 +32,15 @@ export const ProductReviews: React.FC<ProductReviewsProps> = ({
 
   // Form State para nueva reseña
   const [rating, setRating] = useState(5);
-  const [title, setTitle] = useState('');
-  const [comment, setComment] = useState('');
+  const [title, setTitle] = useState("");
+  const [comment, setComment] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Editing state
   const [editingReviewId, setEditingReviewId] = useState<string | null>(null);
   const [editRating, setEditRating] = useState(5);
-  const [editComment, setEditComment] = useState('');
+  const [editComment, setEditComment] = useState("");
 
   const loadReviews = async () => {
     try {
@@ -39,7 +48,7 @@ export const ProductReviews: React.FC<ProductReviewsProps> = ({
       const data = await reviewService.getReviewsByProductId(productId);
       setReviews(data);
     } catch (error) {
-      console.error('Error loading reviews:', error);
+      console.error("Error loading reviews:", error);
     } finally {
       setIsLoading(false);
     }
@@ -61,19 +70,23 @@ export const ProductReviews: React.FC<ProductReviewsProps> = ({
     }
 
     if (!comment.trim()) {
-      setErrorMessage('Por favor escribe tu comentario sobre el producto.');
+      setErrorMessage("Por favor escribe tu comentario sobre el producto.");
       return;
     }
 
     try {
       setIsSubmitting(true);
-      setErrorMessage('');
-      await reviewService.createReview(productId, { rating, title, comment }, currentUser);
-      setTitle('');
-      setComment('');
+      setErrorMessage("");
+      await reviewService.createReview(
+        productId,
+        { rating, title, comment },
+        currentUser,
+      );
+      setTitle("");
+      setComment("");
       setRating(5);
     } catch (error: any) {
-      setErrorMessage(error.message || 'Error al enviar la reseña.');
+      setErrorMessage(error.message || "Error al enviar la reseña.");
     } finally {
       setIsSubmitting(false);
     }
@@ -87,19 +100,23 @@ export const ProductReviews: React.FC<ProductReviewsProps> = ({
 
   const handleSaveEdit = async (reviewId: string) => {
     try {
-      await reviewService.updateReview(reviewId, { rating: editRating, comment: editComment }, currentUser);
+      await reviewService.updateReview(
+        reviewId,
+        { rating: editRating, comment: editComment },
+        currentUser,
+      );
       setEditingReviewId(null);
     } catch (error: any) {
-      alert(error.message || 'Error al actualizar');
+      alert(error.message || "Error al actualizar");
     }
   };
 
   const handleDeleteReview = async (reviewId: string) => {
-    if (confirm('¿Estás seguro de eliminar este comentario?')) {
+    if (confirm("¿Estás seguro de eliminar este comentario?")) {
       try {
         await reviewService.deleteReview(reviewId, currentUser);
       } catch (error: any) {
-        alert(error.message || 'Error al eliminar');
+        alert(error.message || "Error al eliminar");
       }
     }
   };
@@ -118,7 +135,8 @@ export const ProductReviews: React.FC<ProductReviewsProps> = ({
             <StarRating rating={ratingSummary.average} size="md" />
           </div>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Basado en {ratingSummary.total} {ratingSummary.total === 1 ? 'opinión' : 'opiniones'} de clientes
+            Basado en {ratingSummary.total}{" "}
+            {ratingSummary.total === 1 ? "opinión" : "opiniones"} de clientes
           </p>
         </div>
 
@@ -126,10 +144,13 @@ export const ProductReviews: React.FC<ProductReviewsProps> = ({
         <div className="flex-1 max-w-sm w-full space-y-1.5 text-xs">
           {[5, 4, 3, 2, 1].map((stars) => {
             const count = ratingSummary.distribution[stars] || 0;
-            const percentage = ratingSummary.total > 0 ? (count / ratingSummary.total) * 100 : 0;
+            const percentage =
+              ratingSummary.total > 0 ? (count / ratingSummary.total) * 100 : 0;
             return (
               <div key={stars} className="flex items-center gap-2">
-                <span className="w-12 text-slate-500 font-medium">{stars} estrellas</span>
+                <span className="w-12 text-slate-500 font-medium">
+                  {stars} estrellas
+                </span>
                 <div className="flex-1 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-amber-400 rounded-full transition-all duration-500"
@@ -163,7 +184,12 @@ export const ProductReviews: React.FC<ProductReviewsProps> = ({
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                 Calificación general
               </label>
-              <StarRating rating={rating} size="lg" interactive onRatingChange={setRating} />
+              <StarRating
+                rating={rating}
+                size="lg"
+                interactive
+                onRatingChange={setRating}
+              />
             </div>
 
             <div>
@@ -198,7 +224,7 @@ export const ProductReviews: React.FC<ProductReviewsProps> = ({
               className="py-2.5 px-5 rounded-xl bg-[#0f172a] text-white hover:bg-slate-800 text-xs font-bold transition-all flex items-center gap-2 shadow-sm"
             >
               <Send className="w-3.5 h-3.5 text-[#f97316]" />
-              {isSubmitting ? 'Publicando...' : 'Publicar Reseña'}
+              {isSubmitting ? "Publicando..." : "Publicar Reseña"}
             </button>
           </form>
         ) : (
@@ -232,12 +258,14 @@ export const ProductReviews: React.FC<ProductReviewsProps> = ({
           </div>
         ) : reviews.length === 0 ? (
           <p className="text-xs text-slate-500 py-4 text-center">
-            Aún no hay reseñas para este producto. ¡Sé el primero en calificarlo!
+            Aún no hay reseñas para este producto. ¡Sé el primero en
+            calificarlo!
           </p>
         ) : (
           reviews.map((rev) => {
             const isOwner = currentUser && currentUser.id === rev.userId;
-            const canManage = isOwner || (currentUser && currentUser.role === 'ADMIN');
+            const canManage =
+              isOwner || (currentUser && currentUser.role === "ADMIN");
             const isEditing = editingReviewId === rev.id;
 
             return (
@@ -249,12 +277,15 @@ export const ProductReviews: React.FC<ProductReviewsProps> = ({
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <img
-                      src={rev.userAvatar || generateAvatarPlaceholder(rev.userName)}
+                      src={
+                        rev.userAvatar ||
+                        generateAvatarPlaceholder(rev.userName)
+                      }
                       alt={rev.userName}
                       referrerPolicy="no-referrer"
-                      crossOrigin="anonymous"
                       onError={(e) => {
-                        (e.currentTarget as HTMLImageElement).src = generateAvatarPlaceholder(rev.userName);
+                        (e.currentTarget as HTMLImageElement).src =
+                          generateAvatarPlaceholder(rev.userName);
                       }}
                       className="w-9 h-9 rounded-full object-cover ring-1 ring-slate-200"
                     />
@@ -265,15 +296,16 @@ export const ProductReviews: React.FC<ProductReviewsProps> = ({
                         </span>
                         {rev.verifiedPurchase && (
                           <span className="text-[10px] text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-1.5 py-0.5 rounded font-semibold flex items-center gap-0.5">
-                            <CheckCircle2 className="w-2.5 h-2.5" /> Compra Verificada
+                            <CheckCircle2 className="w-2.5 h-2.5" /> Compra
+                            Verificada
                           </span>
                         )}
                       </div>
                       <span className="text-[10px] text-slate-400">
-                        {new Date(rev.createdAt).toLocaleDateString('es-PE', {
-                          day: '2-digit',
-                          month: 'short',
-                          year: 'numeric',
+                        {new Date(rev.createdAt).toLocaleDateString("es-PE", {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
                         })}
                       </span>
                     </div>
@@ -301,7 +333,12 @@ export const ProductReviews: React.FC<ProductReviewsProps> = ({
 
                 {isEditing ? (
                   <div className="mt-4 space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800">
-                    <StarRating rating={editRating} size="md" interactive onRatingChange={setEditRating} />
+                    <StarRating
+                      rating={editRating}
+                      size="md"
+                      interactive
+                      onRatingChange={setEditRating}
+                    />
                     <textarea
                       value={editComment}
                       onChange={(e) => setEditComment(e.target.value)}

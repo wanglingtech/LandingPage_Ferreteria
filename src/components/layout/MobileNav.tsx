@@ -1,9 +1,19 @@
-import React from 'react';
-import { SITE_CONFIG } from '../../config/site.config';
-import { User, MessageSquare, Send, Phone, Clock, ChevronRight, X, ShieldCheck, LogOut } from 'lucide-react';
-import { User as UserModel } from '../../models';
-import { authService } from '../../services/auth.service';
-import { generateAvatarPlaceholder } from '../../utils/imageFallback';
+import React from "react";
+import { SITE_CONFIG } from "../../config/site.config";
+import {
+  User,
+  MessageSquare,
+  Send,
+  Phone,
+  Clock,
+  ChevronRight,
+  X,
+  ShieldCheck,
+  LogOut,
+} from "lucide-react";
+import { User as UserModel } from "../../models";
+import { authService } from "../../services/auth.service";
+import { generateAvatarPlaceholder } from "../../utils/imageFallback";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -65,12 +75,15 @@ export const MobileNav: React.FC<MobileNavProps> = ({
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <img
-                  src={currentUser.avatar || generateAvatarPlaceholder(currentUser.name)}
+                  src={
+                    currentUser.avatar ||
+                    generateAvatarPlaceholder(currentUser.name)
+                  }
                   alt={currentUser.name}
                   referrerPolicy="no-referrer"
-                  crossOrigin="anonymous"
                   onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src = generateAvatarPlaceholder(currentUser.name);
+                    (e.currentTarget as HTMLImageElement).src =
+                      generateAvatarPlaceholder(currentUser.name);
                   }}
                   className="w-10 h-10 rounded-full object-cover ring-2 ring-[#f97316]"
                 />
@@ -102,7 +115,8 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               }}
               className="w-full py-2.5 px-4 bg-[#0f172a] text-white rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-slate-800 transition-colors"
             >
-              <User className="w-4 h-4 text-[#f97316]" /> Iniciar Sesión / Registrarse
+              <User className="w-4 h-4 text-[#f97316]" /> Iniciar Sesión /
+              Registrarse
             </button>
           )}
         </div>
@@ -113,7 +127,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
             Navegación
           </p>
           {SITE_CONFIG.navLinks.map((link) => {
-            const sectionKey = link.href.replace('#', '');
+            const sectionKey = link.href.replace("#", "");
             const isActive = activeSection === sectionKey;
             return (
               <button
@@ -121,12 +135,14 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                 onClick={() => handleLinkClick(sectionKey)}
                 className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                   isActive
-                    ? 'bg-[#f97316]/10 text-[#f97316]'
-                    : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+                    ? "bg-[#f97316]/10 text-[#f97316]"
+                    : "text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
                 }`}
               >
                 <span className="flex items-center gap-2">
-                  <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-[#f97316]' : 'bg-transparent'}`} />
+                  <span
+                    className={`w-1.5 h-1.5 rounded-full ${isActive ? "bg-[#f97316]" : "bg-transparent"}`}
+                  />
                   {link.label}
                 </span>
                 {link.badge ? (
@@ -170,15 +186,22 @@ export const MobileNav: React.FC<MobileNavProps> = ({
             <div className="flex items-start gap-1.5">
               <Clock className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
               <div className="space-y-0.5 text-[11px]">
-                <p className="font-semibold text-slate-700 dark:text-slate-200">Horario de Atención:</p>
+                <p className="font-semibold text-slate-700 dark:text-slate-200">
+                  Horario de Atención:
+                </p>
                 <p>{SITE_CONFIG.contact.schedules.weekdays}</p>
                 <p>{SITE_CONFIG.contact.schedules.saturday}</p>
-                <p className="text-slate-400">{SITE_CONFIG.contact.schedules.sunday}</p>
+                <p className="text-slate-400">
+                  {SITE_CONFIG.contact.schedules.sunday}
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-1.5 pt-1">
               <Phone className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-              <a href={`tel:${SITE_CONFIG.contact.phone}`} className="hover:text-amber-500 font-medium">
+              <a
+                href={`tel:${SITE_CONFIG.contact.phone}`}
+                className="hover:text-amber-500 font-medium"
+              >
                 {SITE_CONFIG.contact.phoneDisplay}
               </a>
             </div>

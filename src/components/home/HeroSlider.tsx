@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Banner } from '../../models';
-import { bannerService } from '../../services/banner.service';
-import { ChevronLeft, ChevronRight, ArrowRight, ShieldCheck, Sparkles, MessageSquare } from 'lucide-react';
-import { SITE_CONFIG } from '../../config/site.config';
-import { generateBannerPlaceholder } from '../../utils/imageFallback';
+import React, { useState, useEffect } from "react";
+import { Banner } from "../../models";
+import { bannerService } from "../../services/banner.service";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ArrowRight,
+  ShieldCheck,
+  Sparkles,
+  MessageSquare,
+} from "lucide-react";
+import { SITE_CONFIG } from "../../config/site.config";
+import { generateBannerPlaceholder } from "../../utils/imageFallback";
 
 interface HeroSliderProps {
   onNavigateSection: (sectionId: string) => void;
 }
 
-export const HeroSlider: React.FC<HeroSliderProps> = ({ onNavigateSection }) => {
+export const HeroSlider: React.FC<HeroSliderProps> = ({
+  onNavigateSection,
+}) => {
   const [banners, setBanners] = useState<Banner[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -73,7 +82,6 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onNavigateSection }) => 
     >
       {/* Diapositiva Principal */}
       <div className="relative min-h-[380px] xs:min-h-[420px] sm:min-h-[480px] lg:min-h-[520px] flex items-center">
-        
         {/* Imagen de fondo con overlay degradado profesional */}
         <div className="absolute inset-0 z-0">
           <img
@@ -81,9 +89,9 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onNavigateSection }) => 
             alt={currentBanner.title}
             loading="eager"
             referrerPolicy="no-referrer"
-            crossOrigin="anonymous"
             onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = generateBannerPlaceholder(currentBanner.title);
+              (e.currentTarget as HTMLImageElement).src =
+                generateBannerPlaceholder(currentBanner.title);
             }}
             className="w-full h-full object-cover opacity-20 sm:opacity-25 filter scale-105 transition-all duration-1000 ease-out"
           />
@@ -93,7 +101,6 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onNavigateSection }) => 
 
         {/* Contenido del Slide */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-6 sm:px-10 lg:px-12 py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
-          
           <div className="lg:col-span-8 space-y-3.5 sm:space-y-6">
             {/* Badge de Oferta / Tagline */}
             <div className="flex items-center gap-2 flex-wrap">
@@ -130,21 +137,23 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onNavigateSection }) => 
             {/* Botones de Llamado a la Acción */}
             <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 pt-2">
               <button
-                onClick={() => onNavigateSection('productos')}
+                onClick={() => onNavigateSection("productos")}
                 className="bg-[#f97316] hover:bg-[#ea580c] text-white px-5 sm:px-8 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-black shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2 min-h-[40px]"
               >
                 {currentBanner.ctaText} <ArrowRight className="w-4 h-4" />
               </button>
 
               <button
-                onClick={() => onNavigateSection('ofertas')}
+                onClick={() => onNavigateSection("ofertas")}
                 className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all hover:scale-[1.02] active:scale-95 min-h-[40px]"
               >
-                {currentBanner.secondaryCtaText || 'Ver Ofertas'}
+                {currentBanner.secondaryCtaText || "Ver Ofertas"}
               </button>
 
               <a
-                href={SITE_CONFIG.buildWhatsAppUrl('¡Hola Ferretería July! Deseo recibir la lista de precios y catálogo actual.')}
+                href={SITE_CONFIG.buildWhatsAppUrl(
+                  "¡Hola Ferretería July! Deseo recibir la lista de precios y catálogo actual.",
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex lg:hidden items-center gap-2 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/40 text-xs font-bold min-h-[40px]"
@@ -162,13 +171,18 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onNavigateSection }) => 
                   FJ
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white leading-none">Ferretería July</h4>
-                  <p className="text-[10px] text-slate-300 uppercase tracking-widest mt-1">Distribuidor Oficial</p>
+                  <h4 className="text-sm font-bold text-white leading-none">
+                    Ferretería July
+                  </h4>
+                  <p className="text-[10px] text-slate-300 uppercase tracking-widest mt-1">
+                    Distribuidor Oficial
+                  </p>
                 </div>
               </div>
 
               <p className="text-xs text-slate-200 leading-relaxed">
-                Atención personalizada para compras minoristas y proyectos de gran envergadura.
+                Atención personalizada para compras minoristas y proyectos de
+                gran envergadura.
               </p>
 
               <div className="pt-2 border-t border-white/10 flex items-center justify-between text-xs font-bold text-amber-400">
@@ -177,7 +191,6 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onNavigateSection }) => 
               </div>
             </div>
           </div>
-
         </div>
 
         {/* Controles Prev / Next */}
@@ -209,15 +222,14 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onNavigateSection }) => 
                 onClick={() => setCurrentIndex(idx)}
                 className={`h-2 rounded-full transition-all ${
                   currentIndex === idx
-                    ? 'w-8 bg-[#f97316]'
-                    : 'w-2 bg-white/40 hover:bg-white/70'
+                    ? "w-8 bg-[#f97316]"
+                    : "w-2 bg-white/40 hover:bg-white/70"
                 }`}
                 aria-label={`Ir a diapositiva ${idx + 1}`}
               />
             ))}
           </div>
         )}
-
       </div>
     </section>
   );

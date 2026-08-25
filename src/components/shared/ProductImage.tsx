@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { generatePlaceholderSvg } from '../../utils/imageFallback';
+import React, { useState, useEffect } from "react";
+import { generatePlaceholderSvg } from "../../utils/imageFallback";
 
 interface ProductImageProps {
   src?: string;
@@ -7,16 +7,16 @@ interface ProductImageProps {
   brand?: string;
   className?: string;
   containerClassName?: string;
-  loading?: 'lazy' | 'eager';
+  loading?: "lazy" | "eager";
 }
 
 export const ProductImage: React.FC<ProductImageProps> = ({
   src,
   alt,
   brand,
-  className = 'w-full h-full object-contain',
-  containerClassName = '',
-  loading = 'lazy',
+  className = "w-full h-full object-contain",
+  containerClassName = "",
+  loading = "lazy",
 }) => {
   const [hasError, setHasError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -28,10 +28,12 @@ export const ProductImage: React.FC<ProductImageProps> = ({
   }, [src]);
 
   const fallbackSrc = generatePlaceholderSvg(alt, brand);
-  const finalSrc = hasError || !src || src.trim() === '' ? fallbackSrc : src;
+  const finalSrc = hasError || !src || src.trim() === "" ? fallbackSrc : src;
 
   return (
-    <div className={`relative flex items-center justify-center overflow-hidden ${containerClassName}`}>
+    <div
+      className={`relative flex items-center justify-center overflow-hidden ${containerClassName}`}
+    >
       {!isLoaded && !hasError && (
         <div className="absolute inset-0 bg-slate-100 dark:bg-slate-800/60 animate-pulse rounded-lg" />
       )}
@@ -40,13 +42,16 @@ export const ProductImage: React.FC<ProductImageProps> = ({
         alt={alt}
         loading={loading}
         referrerPolicy="no-referrer"
-        crossOrigin="anonymous"
+        style={{
+          backgroundImage: `url("${fallbackSrc}")`,
+          backgroundSize: "cover",
+        }}
         onLoad={() => setIsLoaded(true)}
         onError={() => {
           setHasError(true);
           setIsLoaded(true);
         }}
-        className={`${className} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+        className={`${className} transition-opacity duration-300`}
       />
     </div>
   );

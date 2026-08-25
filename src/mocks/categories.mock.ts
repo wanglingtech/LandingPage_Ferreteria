@@ -21,7 +21,7 @@ export const MOCK_CATEGORIES: Category[] = [
       "Juegos de llaves, alicates, martillos, destornilladores y niveles de precisión.",
     icon: "Wrench",
     imageUrl:
-      "https://ferrincorp.com.pe/wp-content/uploads/2024/10/DWE4010-B2_03.webp",
+      "https://imagedelivery.net/0tt38OLkrSmHRt7hdItWEA/01815110-27e7-4d9a-ce7b-804913688800/public",
     productCount: 68,
     featured: true,
   },

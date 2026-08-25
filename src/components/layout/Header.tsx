@@ -1,12 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Search, ShoppingBag, User, Menu, X, Heart, ShieldCheck } from 'lucide-react';
-import { SITE_CONFIG } from '../../config/site.config';
-import { Product, User as UserModel } from '../../models';
-import { productService } from '../../services/product.service';
-import { authService } from '../../services/auth.service';
-import { cartService } from '../../services/cart.service';
-import { SearchDropdown } from '../products/SearchDropdown';
-import { generateAvatarPlaceholder } from '../../utils/imageFallback';
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Search,
+  ShoppingBag,
+  User,
+  Menu,
+  X,
+  Heart,
+  ShieldCheck,
+} from "lucide-react";
+import { SITE_CONFIG } from "../../config/site.config";
+import { Product, User as UserModel } from "../../models";
+import { productService } from "../../services/product.service";
+import { authService } from "../../services/auth.service";
+import { cartService } from "../../services/cart.service";
+import { SearchDropdown } from "../products/SearchDropdown";
+import { generateAvatarPlaceholder } from "../../utils/imageFallback";
 
 interface HeaderProps {
   onOpenCart: () => void;
@@ -35,12 +43,14 @@ export const Header: React.FC<HeaderProps> = ({
   currentUser: propCurrentUser,
   cartCount: propCartCount,
 }) => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [cartCount, setCartCount] = useState(propCartCount ?? 0);
-  const [currentUser, setCurrentUser] = useState<UserModel | null>(propCurrentUser ?? null);
+  const [currentUser, setCurrentUser] = useState<UserModel | null>(
+    propCurrentUser ?? null,
+  );
 
   const toggleMobileNav = onOpenMobileNav ?? onToggleMobileMenu ?? (() => {});
   const isNavOpen = isMobileNavOpen ?? isMobileMenuOpen ?? false;
@@ -78,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({
           const results = await productService.liveSearch(searchQuery, 6);
           setSearchResults(results);
         } catch (error) {
-          console.error('Error in live search:', error);
+          console.error("Error in live search:", error);
           setSearchResults([]);
         } finally {
           setIsSearching(false);
@@ -103,20 +113,23 @@ export const Header: React.FC<HeaderProps> = ({
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
-      const inDesktop = searchContainerRef.current && searchContainerRef.current.contains(target);
-      const inMobile = mobileSearchRef.current && mobileSearchRef.current.contains(target);
+      const inDesktop =
+        searchContainerRef.current &&
+        searchContainerRef.current.contains(target);
+      const inMobile =
+        mobileSearchRef.current && mobileSearchRef.current.contains(target);
 
       if (!inDesktop && !inMobile) {
         setIsSearchOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleProductPick = (product: Product) => {
     setIsSearchOpen(false);
-    setSearchQuery('');
+    setSearchQuery("");
     onSelectProduct(product);
   };
 
@@ -126,15 +139,18 @@ export const Header: React.FC<HeaderProps> = ({
       className="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors"
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-4 lg:gap-8">
-        
         {/* Botón Menú Hamburguesa Móvil con target 44px */}
         <button
           onClick={toggleMobileNav}
           className="lg:hidden p-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors focus:outline-none min-w-[40px] min-h-[40px] flex items-center justify-center"
-          aria-label={isNavOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-label={isNavOpen ? "Cerrar menú" : "Abrir menú"}
           id="mobile-menu-toggle-btn"
         >
-          {isNavOpen ? <X className="w-6 h-6 text-[#f97316]" /> : <Menu className="w-6 h-6" />}
+          {isNavOpen ? (
+            <X className="w-6 h-6 text-[#f97316]" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
 
         {/* Brand Logo - Ferretería July */}
@@ -142,7 +158,7 @@ export const Header: React.FC<HeaderProps> = ({
           href="#inicio"
           onClick={(e) => {
             e.preventDefault();
-            onNavigateSection('inicio');
+            onNavigateSection("inicio");
           }}
           className="flex flex-col group cursor-pointer focus:outline-none shrink-0"
           id="brand-logo"
@@ -151,14 +167,15 @@ export const Header: React.FC<HeaderProps> = ({
             FERRETERÍA <span className="text-[#f97316]">JULY</span>
           </span>
           <span className="text-[8px] xs:text-[9px] uppercase tracking-widest font-bold text-slate-500 dark:text-slate-400 -mt-0.5 flex items-center gap-1">
-            <ShieldCheck className="w-2.5 h-2.5 text-[#f97316]" /> Soluciones de confianza
+            <ShieldCheck className="w-2.5 h-2.5 text-[#f97316]" /> Soluciones de
+            confianza
           </span>
         </a>
 
         {/* Navegación Desktop */}
         <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-sm font-semibold text-slate-600 dark:text-slate-300">
           {SITE_CONFIG.navLinks.map((link) => {
-            const sectionKey = link.href.replace('#', '');
+            const sectionKey = link.href.replace("#", "");
             const isActive = activeSection === sectionKey;
             return (
               <a
@@ -170,8 +187,8 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`relative py-1 transition-colors ${
                   isActive
-                    ? 'text-[#f97316] font-bold'
-                    : 'hover:text-[#0f172a] dark:hover:text-white'
+                    ? "text-[#f97316] font-bold"
+                    : "hover:text-[#0f172a] dark:hover:text-white"
                 }`}
                 id={`nav-link-${sectionKey}`}
               >
@@ -190,7 +207,10 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Buscador de Productos Desktop con Debounce */}
-        <div ref={searchContainerRef} className="flex-1 max-w-md relative hidden md:block">
+        <div
+          ref={searchContainerRef}
+          className="flex-1 max-w-md relative hidden md:block"
+        >
           <div className="relative">
             <input
               type="text"
@@ -207,7 +227,7 @@ export const Header: React.FC<HeaderProps> = ({
             {searchQuery && (
               <button
                 onClick={() => {
-                  setSearchQuery('');
+                  setSearchQuery("");
                   setIsSearchOpen(false);
                 }}
                 className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
@@ -227,7 +247,7 @@ export const Header: React.FC<HeaderProps> = ({
               onSelectProduct={handleProductPick}
               onViewAllResults={() => {
                 setIsSearchOpen(false);
-                onNavigateSection('productos');
+                onNavigateSection("productos");
               }}
             />
           )}
@@ -248,7 +268,7 @@ export const Header: React.FC<HeaderProps> = ({
                 id="cart-badge-count"
                 className="absolute -top-1 -right-1 bg-[#f97316] text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-md animate-in zoom-in-75"
               >
-                {cartCount > 99 ? '99+' : cartCount}
+                {cartCount > 99 ? "99+" : cartCount}
               </span>
             )}
           </button>
@@ -262,21 +282,24 @@ export const Header: React.FC<HeaderProps> = ({
               aria-label="Ver perfil de usuario"
             >
               <img
-                src={currentUser.avatar || generateAvatarPlaceholder(currentUser.name)}
+                src={
+                  currentUser.avatar ||
+                  generateAvatarPlaceholder(currentUser.name)
+                }
                 alt={currentUser.name}
                 referrerPolicy="no-referrer"
-                crossOrigin="anonymous"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = generateAvatarPlaceholder(currentUser.name);
+                  (e.currentTarget as HTMLImageElement).src =
+                    generateAvatarPlaceholder(currentUser.name);
                 }}
                 className="w-7 h-7 rounded-full object-cover ring-1 ring-[#f97316]"
               />
               <div className="hidden sm:block">
                 <p className="text-xs font-bold text-slate-900 dark:text-white truncate max-w-[90px] xl:max-w-[120px]">
-                  {currentUser.name.split(' ')[0]}
+                  {currentUser.name.split(" ")[0]}
                 </p>
                 <p className="text-[9px] text-slate-500 dark:text-slate-400 capitalize leading-none">
-                  {currentUser.role === 'ADMIN' ? 'Admin' : 'Mi Cuenta'}
+                  {currentUser.role === "ADMIN" ? "Admin" : "Mi Cuenta"}
                 </p>
               </div>
             </button>
@@ -291,11 +314,13 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           )}
         </div>
-
       </div>
 
       {/* Buscador visible en pantallas móviles / tablets pequeñas */}
-      <div ref={mobileSearchRef} className="md:hidden px-3 sm:px-6 pb-3 pt-0.5 relative">
+      <div
+        ref={mobileSearchRef}
+        className="md:hidden px-3 sm:px-6 pb-3 pt-0.5 relative"
+      >
         <div className="relative">
           <input
             type="text"
@@ -312,7 +337,7 @@ export const Header: React.FC<HeaderProps> = ({
           {searchQuery && (
             <button
               onClick={() => {
-                setSearchQuery('');
+                setSearchQuery("");
                 setIsSearchOpen(false);
               }}
               className="absolute right-2.5 top-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1"
@@ -331,7 +356,7 @@ export const Header: React.FC<HeaderProps> = ({
               onSelectProduct={handleProductPick}
               onViewAllResults={() => {
                 setIsSearchOpen(false);
-                onNavigateSection('productos');
+                onNavigateSection("productos");
               }}
             />
           </div>

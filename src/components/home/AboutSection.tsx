@@ -33,7 +33,6 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 alt="Ferretería July Almacén y Atención"
                 loading="lazy"
                 referrerPolicy="no-referrer"
-                crossOrigin="anonymous"
                 onError={(e) => {
                   (e.currentTarget as HTMLImageElement).src =
                     generateBannerPlaceholder(
