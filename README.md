@@ -1,104 +1,207 @@
 <div align="center">
-   <img src="docs/screenshots/hero-ferreteria-july.webp" alt="Ferretería July - landing page de catálogo y cotizaciones" width="100%">
+  <!-- SVG Header - Ferretería July -->
+  <svg width="400" height="80" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#EA580C;stop-opacity:1" />
+      </linearGradient>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap');
+      </style>
+    </defs>
+    <text x="50%" y="55" text-anchor="middle" font-family="'Montserrat', sans-serif" font-weight="800" font-size="48" fill="url(#grad)" letter-spacing="2">
+      🏪 Ferretería July
+    </text>
+  </svg>
 
-# Ferretería July
-
-**Landing page comercial para catálogo, promociones y cotizaciones por WhatsApp**
-
-   <p>
-      <a href="https://github.com/wanglingtech/LandingPage_Ferreteria"><img src="https://img.shields.io/badge/GitHub-Repositorio-181717?style=for-the-badge&logo=github" alt="Repositorio en GitHub"></a>
-      <img src="https://img.shields.io/badge/Estado-Activo-16a34a?style=for-the-badge" alt="Estado activo">
-      <img src="https://img.shields.io/badge/Licencia-MIT-f97316?style=for-the-badge" alt="Licencia MIT">
-   </p>
+  <p><strong>Landing page comercial para catálogo, promociones y cotizaciones por WhatsApp</strong></p>
+  
+  <p>
+    <a href="https://github.com/wanglingtech/LandingPage_Ferreteria">
+      <img src="https://img.shields.io/badge/GitHub-Repositorio-181717?style=for-the-badge&logo=github" alt="Repositorio en GitHub">
+    </a>
+    <a href="https://landing-page-ferreteria-nine.vercel.app">
+      <img src="https://img.shields.io/badge/Demo-Vercel-000000?style=for-the-badge&logo=vercel" alt="Demo en Vercel">
+    </a>
+    <img src="https://img.shields.io/badge/Estado-Activo-16a34a?style=for-the-badge" alt="Estado activo">
+    <img src="https://img.shields.io/badge/Licencia-MIT-f97316?style=for-the-badge" alt="Licencia MIT">
+  </p>
+  
+  <p>
+    <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" alt="React 19">
+    <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript" alt="TypeScript">
+    <img src="https://img.shields.io/badge/Vite-6-646CFF?style=for-the-badge&logo=vite" alt="Vite 6">
+    <img src="https://img.shields.io/badge/Tailwind-4-06B6D4?style=for-the-badge&logo=tailwindcss" alt="Tailwind 4">
+  </p>
 </div>
 
-## Descripción
+---
 
-Ferretería July es una **landing page moderna, responsive y orientada a conversión** para una ferretería peruana. Presenta la marca, sus categorías, productos destacados, ofertas y canales de contacto en una sola experiencia web.
-
-Más que una página informativa, funciona como un catálogo interactivo: el visitante puede buscar productos, revisar detalles, guardar favoritos, armar un carrito y enviar una solicitud de cotización o pedido directamente por WhatsApp. El proyecto está preparado para evolucionar hacia una API y un sistema de inventario real.
-
-> **Alcance actual:** frontend demostrativo con datos mock y persistencia local del navegador. No incluye todavía un backend productivo ni una base de datos conectada.
-
-## Vista previa
-
-Cuando agregues tus capturas a `docs/screenshots/`, puedes documentar cada vista así:
+## 📸 Vista Previa
 
 <div align="center">
-   <img src="docs/screenshots/catalogo.webp" alt="Catálogo de productos de Ferretería July" width="48%">
-   <img src="docs/screenshots/ofertas.webp" alt="Sección de ofertas de Ferretería July" width="48%">
-   <br><br>
-   <img src="docs/screenshots/carrito-whatsapp.webp" alt="Carrito y cotización por WhatsApp" width="48%">
-   <img src="docs/screenshots/contacto.webp" alt="Sección de contacto de Ferretería July" width="48%">
+  <table>
+    <tr>
+      <td align="center" width="50%"><strong>🏠 Inicio</strong></td>
+      <td align="center" width="50%"><strong>📂 Categorías</strong></td>
+    </tr>
+    <tr>
+      <td><img src="src/assets/captures/inicio.webp" alt="Inicio - Ferretería July" width="100%"></td>
+      <td><img src="src/assets/captures/categoriasproductos.webp" alt="Categorías de productos" width="100%"></td>
+    </tr>
+    <tr>
+      <td align="center"><strong>🛒 Catálogo</strong></td>
+      <td align="center"><strong>🏷️ Descuentos Especiales</strong></td>
+    </tr>
+    <tr>
+      <td><img src="src/assets/captures/catalogoproductos.webp" alt="Catálogo de productos" width="100%"></td>
+      <td><img src="src/assets/captures/descuentosespeciales.webp" alt="Descuentos especiales" width="100%"></td>
+    </tr>
+    <tr>
+      <td align="center"><strong>💰 Productos en Rebaja</strong></td>
+      <td align="center"><strong>⭐ Valor Ferretería</strong></td>
+    </tr>
+    <tr>
+      <td><img src="src/assets/captures/productosrebaja.webp" alt="Productos en rebaja" width="100%"></td>
+      <td><img src="src/assets/captures/valorferreteria.webp" alt="Valor de la ferretería" width="100%"></td>
+    </tr>
+    <tr>
+      <td align="center"><strong>👥 Conócenos</strong></td>
+      <td align="center"><strong>📞 Contacto</strong></td>
+    </tr>
+    <tr>
+      <td><img src="src/assets/captures/conocenos.webp" alt="Sección Conócenos" width="100%"></td>
+      <td><img src="src/assets/captures/contacto.webp" alt="Sección de contacto" width="100%"></td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2"><strong>📌 Footer</strong></td>
+    </tr>
+    <tr>
+      <td colspan="2"><img src="src/assets/captures/footer.webp" alt="Footer de la página" width="100%"></td>
+    </tr>
+  </table>
 </div>
 
-Si todavía no tienes las imágenes, toma capturas de la aplicación en escritorio y móvil, guárdalas con esos nombres y súbelas al repositorio. Usa `webp` o `png`, un ancho aproximado de 1280 px y textos alternativos descriptivos.
+---
 
-## Funcionalidades
+## 🎯 Descripción
 
-- Hero principal con llamadas a la acción para explorar el catálogo y solicitar precios.
-- Catálogo con búsqueda, categorías, productos destacados y productos en oferta.
-- Vista rápida y modal de detalle con especificaciones, precio, stock y reseñas.
-- Carrito persistente con cálculo de cantidades, descuentos y total estimado.
-- Generación de mensajes de consulta y pedido para WhatsApp.
-- Favoritos persistentes en `localStorage`.
-- Registro e inicio de sesión demostrativos para la experiencia de usuario.
-- Secciones de beneficios, trayectoria, contacto, horarios y preguntas frecuentes.
-- Diseño responsive, modo claro/oscuro y navegación móvil.
-- SEO inicial con título, descripción, keywords y Open Graph en `index.html`.
+**Ferretería July** es una landing page moderna, responsive y orientada a conversión para una ferretería peruana. Presenta la marca, sus categorías, productos destacados, ofertas y canales de contacto en una sola experiencia web.
 
-## Tecnologías utilizadas
+Más que una página informativa, funciona como un **catálogo interactivo**: el visitante puede buscar productos, revisar detalles, guardar favoritos, armar un carrito y enviar una solicitud de cotización o pedido directamente por WhatsApp.
+
+> **📌 Alcance actual:** Frontend demostrativo con datos mock y persistencia local del navegador. Preparado para evolucionar hacia una API y sistema de inventario real.
+
+---
+
+## ✨ Funcionalidades
+
+| Ícono | Característica   | Descripción                                                         |
+| ----- | ---------------- | ------------------------------------------------------------------- |
+| 🏠    | **Hero**         | Llamadas a la acción para explorar catálogo y solicitar precios     |
+| 📦    | **Catálogo**     | Búsqueda en tiempo real, categorías, productos destacados y ofertas |
+| 🔍    | **Vista rápida** | Modal de detalle con especificaciones, precio, stock y reseñas      |
+| 🛒    | **Carrito**      | Persistente con cálculo de cantidades, descuentos y total estimado  |
+| 💬    | **WhatsApp**     | Generación de mensajes de consulta y pedido directo                 |
+| ⭐    | **Favoritos**    | Persistencia en `localStorage`                                      |
+| 👤    | **Usuario**      | Registro e inicio de sesión demostrativos                           |
+| 📱    | **Diseño**       | Responsive, modo claro/oscuro y navegación móvil                    |
+| 🔍    | **SEO**          | Metaetiquetas, Open Graph y keywords optimizadas                    |
+
+---
+
+## 🛠️ Tecnologías Utilizadas
 
 ### Frontend
 
-- **React 19** y **TypeScript** para la interfaz y el tipado.
-- **Vite 6** para desarrollo local y compilación optimizada.
-- **Tailwind CSS 4** para estilos responsive y tokens visuales.
-- **Lucide React** para iconografía consistente.
-- **Motion** para transiciones y animaciones de interfaz.
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="25%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" width="50" height="50" alt="React"><br>
+        <strong>React 19</strong>
+      </td>
+      <td align="center" width="25%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" width="50" height="50" alt="TypeScript"><br>
+        <strong>TypeScript</strong>
+      </td>
+      <td align="center" width="25%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" width="50" height="50" alt="Vite"><br>
+        <strong>Vite 6</strong>
+      </td>
+      <td align="center" width="25%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" width="50" height="50" alt="Tailwind"><br>
+        <strong>Tailwind CSS 4</strong>
+      </td>
+    </tr>
+  </table>
+</div>
 
-### Lenguajes y herramientas
+### Librerías y Herramientas
 
-- TypeScript, TSX, CSS y HTML5.
-- Node.js y npm.
-- Arquitectura por componentes con servicios y mocks separados.
-- Preparación de endpoints REST en `src/services/api.config.ts` para una futura integración con backend.
+- 🎨 **Lucide React** - Iconografía consistente
+- 🎬 **Motion** - Transiciones y animaciones
+- 📦 **localStorage** - Persistencia de datos
+- 🌐 **Node.js** + **npm** - Entorno de desarrollo
+- 🏗️ **Arquitectura por componentes** - Servicios y mocks separados
 
-## Arquitectura del proyecto
+---
+
+## 📁 Estructura del Proyecto
 
 ```text
 .
 ├── assets/                 # Recursos visuales del proyecto
+│   ├── captures/           # Capturas de pantalla para README
+│   └── img/                # Logos e imágenes de marca
 ├── src/
-│   ├── components/         # Layout, home, productos, carrito y autenticación
+│   ├── components/         # Layout, home, productos, carrito, autenticación
+│   │   ├── layout/         # Header, Footer, navegación
+│   │   ├── home/           # Hero, categorías, ofertas, beneficios
+│   │   ├── products/       # Catálogo, detalles, filtros
+│   │   ├── cart/           # Carrito, checkout
+│   │   └── auth/           # Login, registro
 │   ├── config/             # Configuración de marca y contacto
-│   ├── mocks/              # Banners, categorías, productos y reseñas de demostración
+│   ├── mocks/              # Banners, categorías, productos y reseñas
 │   ├── models/             # Interfaces y tipos TypeScript
-│   ├── services/           # Carrito, favoritos, autenticación, productos y toast
+│   ├── services/           # Carrito, favoritos, autenticación, productos
 │   └── utils/              # Utilidades compartidas
 ├── index.html              # Metadatos SEO y punto de entrada
 ├── vite.config.ts          # Configuración de Vite y Tailwind
 └── package.json            # Scripts y dependencias
 ```
 
-## Requisitos
+## 🚀 Instalación y Ejecución Local
 
-- Node.js 18 o superior.
-- npm 9 o superior.
-- Git.
+---
 
-## Instalación y ejecución local
+- Requisitos previos
+- Node.js 18 o superior
+- npm 9 o superior
+- Git
+
+---
+
+## Pasos
 
 ```bash
+# Clonar el repositorio
 git clone https://github.com/wanglingtech/LandingPage_Ferreteria.git
+
+# Entrar al directorio
 cd LandingPage_Ferreteria
+
+# Instalar dependencias
 npm install
+
+# Iniciar servidor de desarrollo
 npm run dev
 ```
 
-Abre `http://localhost:3000` en el navegador. El servidor de Vite acepta conexiones externas gracias a la configuración `--host=0.0.0.0`.
+Abre http://localhost:3000 en tu navegador.
 
-### Scripts disponibles
+## Scripts disponibles
 
 ```bash
 npm run dev      # Inicia Vite en desarrollo
@@ -107,65 +210,61 @@ npm run build    # Genera la versión de producción en dist/
 npm run preview  # Sirve localmente la compilación de producción
 ```
 
-## Configuración de datos
+## ⚙️ Configuración de Datos
 
-Los datos de contacto, enlaces sociales, horarios, moneda, beneficios y estadísticas se centralizan en [`src/config/site.config.ts`](src/config/site.config.ts). Antes de publicar, reemplaza los datos de ejemplo por los datos reales del negocio, especialmente teléfono, dirección, correo, WhatsApp y redes sociales.
+Los datos de contacto, enlaces sociales, horarios, moneda, beneficios y estadísticas se centralizan en: 📁 src/config/site.config.ts
 
-Las imágenes de productos y banners de demostración están definidas en `src/mocks/`. Verifica que tengas permiso para usar imágenes de terceros o sustitúyelas por fotografías propias y optimizadas.
+Antes de publicar, reemplaza los datos de ejemplo por los datos reales del negocio, especialmente:
 
-## Publicar gratis con un dominio público
+- 📞 Teléfono
+- 📍 Dirección
+- ✉️ Correo
+- 💬 WhatsApp
+- 🌐 Redes sociales
 
-La opción más sencilla para este proyecto es **Vercel**, porque detecta Vite automáticamente y entrega una URL pública gratuita como `tu-proyecto.vercel.app`.
+Las imágenes de productos y banners de demostración están definidas en src/mocks/. Verifica que tengas permiso para usar imágenes de terceros o sustitúyelas por fotografías propias y optimizadas.
 
-### Opción recomendada: Vercel
+## 📄 Licencia
 
-1. Sube el proyecto a GitHub.
-2. Crea una cuenta en [Vercel](https://vercel.com/) e inicia sesión con GitHub.
-3. Pulsa **Add New Project** y selecciona este repositorio.
-4. Confirma estos valores:
-   - **Framework Preset:** `Vite`
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-   - **Install Command:** `npm install`
-5. Pulsa **Deploy**.
-6. En **Settings > Domains**, copia la URL pública gratuita o conecta un dominio propio.
+---
 
-Cada `push` a la rama configurada generará un nuevo despliegue automáticamente.
+Este proyecto está bajo la Licencia MIT - una licencia permisiva que permite:
 
-### Alternativa: Netlify
+✅ Uso comercial del proyecto
+✅ Modificación del código fuente
+✅ Distribución de copias del proyecto
+✅ Sublicencia del proyecto
 
-1. Entra a [Netlify](https://www.netlify.com/) y elige **Add new site > Import an existing project**.
-2. Conecta GitHub y selecciona el repositorio.
-3. Configura `npm run build` como comando de compilación y `dist` como directorio de publicación.
-4. Publica el sitio y usa el subdominio gratuito `tu-sitio.netlify.app`.
+---
 
-Para una SPA con rutas internas, añade después un archivo `public/_redirects` con esta línea:
+## Requisito: Mantener el aviso de copyright y la licencia en todas las copias.
 
-```text
-/* /index.html 200
-```
+<details> <summary><strong>📋 Ver texto completo de la Licencia MIT</strong></summary>
+MIT License
 
-## Variables de entorno
+Copyright (c) 2024 WangLing Tech
 
-La versión actual funciona con datos mock y no necesita variables de entorno para iniciar. Si se habilita una API o una integración con Gemini, copia `.env.example` a `.env.local`, completa únicamente las claves privadas en tu entorno de despliegue y nunca las subas a GitHub.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## Autor
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-<div align="center">
-   <strong>WangLing Tech</strong><br>
-   Desarrollador Full-Stack enfocado en productos web y soluciones empresariales
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-   <p>
-      <a href="https://github.com/wanglingtech">GitHub</a> ·
-      <a href="https://www.linkedin.com/in/kevin-villegas-solis-7b0038366/">LinkedIn</a> ·
-      <a href="mailto:kevinvillegas.dev@gmail.com">Email</a>
-   </p>
-</div>
+</details>
 
-## Licencia
+## 👨‍💻 Autor
 
-Este proyecto se distribuye bajo la [Licencia MIT](LICENSE).
-
-<div align="center">
-   Hecho con TypeScript, React y dedicación para Ferretería July.
-</div>
+<div align="center"> <img src="src/assets/img/symbol-only-dark.png" alt="WangLing Tech Logo" width="120"> <h3>WangLing Tech</h3> <p><em>Desarrollador Full-Stack</em></p> <p> <a href="https://github.com/wanglingtech"> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"> </a> <a href="https://www.linkedin.com/in/kevin-villegas-solis-7b0038366/"> <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"> </a> <a href="mailto:kevinvillegas.dev@gmail.com"> <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"> </a> <a href="https://www.youtube.com/@wanglingtech"> <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"> </a> </p> </div>
+<div align="center"> <p>Hecho con ❤️ usando TypeScript, React y dedicación para <strong>Ferretería July</strong></p> <p> <img src="https://img.shields.io/badge/Made%20with-React-61DAFB?style=flat-square&logo=react" alt="Made with React"> <img src="https://img.shields.io/badge/Made%20with-TypeScript-3178C6?style=flat-square&logo=typescript" alt="Made with TypeScript"> <img src="https://img.shields.io/badge/Made%20with-Tailwind-06B6D4?style=flat-square&logo=tailwindcss" alt="Made with Tailwind"> </p> </div> ```
