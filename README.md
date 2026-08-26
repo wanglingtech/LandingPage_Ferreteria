@@ -1,21 +1,8 @@
 <div align="center">
-  <!-- SVG Header - Ferretería July -->
-  <svg width="400" height="80" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#EA580C;stop-opacity:1" />
-      </linearGradient>
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap');
-      </style>
-    </defs>
-    <text x="50%" y="55" text-anchor="middle" font-family="'Montserrat', sans-serif" font-weight="800" font-size="48" fill="url(#grad)" letter-spacing="2">
-      🏪 Ferretería July
-    </text>
-  </svg>
-
-  <p><strong>Landing page comercial para catálogo, promociones y cotizaciones por WhatsApp</strong></p>
+  <h1>🏪 Ferretería July</h1>
+  <h3>Landing page comercial para catálogo, promociones y cotizaciones por WhatsApp</h3>
+  
+  <br>
   
   <p>
     <a href="https://github.com/wanglingtech/LandingPage_Ferreteria">
